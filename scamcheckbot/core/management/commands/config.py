@@ -5,6 +5,10 @@ starttext = '''
 + Номер карты
 + Номер телефона
 + Telegram юзернейм
+
+Поддержать автора:
+TON: UQDMwwUaQeJponB_ngIXF99PM5Ktwwf-UDItbFDkdCO3OPCL
+YooMoney: https://yoomoney.ru/to/410015269954681
 '''
 
 showfounddata = '''Найдена запись:
