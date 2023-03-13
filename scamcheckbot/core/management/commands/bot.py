@@ -49,8 +49,11 @@ def text_message(message):
                 fcelnum = data.tel
                 fcelnum = '+' + format(int(fcelnum[:-1]), ",").replace(",", " ") + fcelnum[-1]
                 fktels += f"{fcelnum}\n"
-            fktgs += f"{data.tg}\n"
-            fkcards += f"{data.card}\n"
+            if data.tg:
+                fktgs += f"{data.tg}\n"
+            if data.card:
+                fkcard = f"{data.card[0:4]} {data.card[4:8]} {data.card[8:12]} {data.card[12:16]}"
+                fkcards += f"{fkcard}\n"
         locale.setlocale(locale.LC_TIME, 'ru_RU.UTF-8')
         scammeradded = datetime.strptime(str(checkdata.scammer.added), '%Y-%m-%d')
         scammeradded = datetime.strftime(scammeradded, '%d %B %Y')
