@@ -33,6 +33,7 @@ def text_message(message):
     fktels = ''
     fktgs = ''
     fkcards = ''
+    fktgids = ''
     user_input = message.text
     if user_input[0] == '8':
         user_input = '7' + user_input[1:]
@@ -54,6 +55,8 @@ def text_message(message):
             if data.card:
                 fkcard = f"{data.card[0:4]} {data.card[4:8]} {data.card[8:12]} {data.card[12:16]}"
                 fkcards += f"{fkcard}\n"
+            if data.tgid:
+                fktgids += f"{data.tgid}\n"
         locale.setlocale(locale.LC_TIME, 'ru_RU.UTF-8')
         scammeradded = datetime.strptime(str(checkdata.scammer.added), '%Y-%m-%d')
         scammeradded = datetime.strftime(scammeradded, '%d %B %Y')
@@ -64,7 +67,7 @@ def text_message(message):
                                                    checkdata.scammer.fraudcount,
                                                    checkdata.scammer.fraudsum,
                                                    checkdata.scammer.comment,
-                                                   fktels, fktgs, fkcards,
+                                                   fktels, fktgs, fktgids, fkcards,
                                                    checkdata.scammer.checkcount
                                                    ))
     else:

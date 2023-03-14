@@ -25,11 +25,11 @@ class Scammers(models.Model):
     taxid = models.PositiveIntegerField(verbose_name='ИИН', null=True, blank=True)
     added = models.DateField('Дата добавления', null=False, auto_now_add=True)
     update = models.DateField('Дата обновления данных', null=False, auto_now=True)
-    checkcount = models.PositiveIntegerField('Кол-во запросов', default=0, null=False)
-    fraudcount = models.PositiveIntegerField('Кол-во обманутых', default=0, null=False)
-    fraudsum = models.PositiveIntegerField('Сколько денег потеряно', default=0, null=False)
+    checkcount = models.PositiveIntegerField('Кол-во запросов', default=0, null=False, blank=False)
+    fraudcount = models.PositiveIntegerField('Кол-во обманутых', default=0, null=False, blank=False)
+    fraudsum = models.PositiveIntegerField('Сколько денег потеряно', default=0, null=False, blank=False)
     comment = models.TextField(verbose_name='Описание деятельности', blank=True, max_length=1000)
-    photo = models.ImageField(upload_to='scammers/photos/', verbose_name='Фото мошенника', max_length=250, blank=True)
+    # photo = models.ImageField(upload_to='scammers/photos/', verbose_name='Фото мошенника', max_length=250, blank=True)
 
     def __str__(self):
         return self.name
@@ -46,6 +46,7 @@ class Scammersdata(models.Model):
     scammer = models.ForeignKey(Scammers, verbose_name='Мошенник', on_delete=models.CASCADE)
     tel = models.CharField(verbose_name='Номер телефона', blank=True, max_length=20)
     tg = models.CharField(verbose_name='Telegram @username', blank=True, max_length=40)
+    tgid = models.PositiveIntegerField(verbose_name='Telegram ID', null=True, blank=True)
     card = models.CharField(verbose_name='Номер карты', blank=True, max_length=20)
 
     def __str__(self):
