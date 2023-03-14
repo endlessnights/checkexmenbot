@@ -22,7 +22,7 @@ class Profiles(models.Model):
 
 class Scammers(models.Model):
     name = models.CharField(verbose_name='Имя мошенника', max_length=100, blank=False)
-    taxid = models.PositiveIntegerField(verbose_name='ИИН', null=True)
+    taxid = models.PositiveIntegerField(verbose_name='ИИН', null=True, blank=True)
     added = models.DateField('Дата добавления', null=False, auto_now_add=True)
     update = models.DateField('Дата обновления данных', null=False, auto_now=True)
     checkcount = models.PositiveIntegerField('Кол-во запросов', default=0, null=False)
